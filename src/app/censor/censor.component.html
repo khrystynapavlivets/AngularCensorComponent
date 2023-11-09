@@ -1,0 +1,16 @@
+<h1 [class]="header" [style.width.vw]="100">{{textHeader}}</h1>
+<div [class]="container">
+    <div [class]="box">
+        <p [id]="badWords"> Bad words:<span [class]="badWordsList">{{ listBadWords + ' ' + BadWords.join(' ')
+                }}</span></p>
+        <div [class]="inputBox">
+            <input type="text" [class]="badWordInput" [placeholder]="placeholder" [(ngModel)]="newWord"
+                [style.borderColor]="isColor! ? 'grey' : 'red'">
+            <button [id]="addWordButton" (click)="addWord(newWord)">Add</button>
+            <button [id]="resetInputButton" (click)="resetInput()">Reset</button>
+        </div>
+        <textarea [(ngModel)]="text" [id]="textArea" [placeholder]="placeholderTextarea"
+            [style.borderColor]="isText! ? 'grey' : 'red'"></textarea>
+        <button [id]="cenzorButton" (click)="censorText()">Cenzor</button>
+    </div>
+</div>

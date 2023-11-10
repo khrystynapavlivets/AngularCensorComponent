@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "https://github.com/khrystynapavlivets/AngularCensorComponent.git",
             "outputPath": "dist/cenzor",
             "index": "src/index.html",
             "main": "src/main.ts",

@@ -1,0 +1,47 @@
+<h1 class="header" [style.width.vw]="100">{{textHeader}}</h1>
+<div class="container">
+    <div class="user-add">
+        <p>Login</p>
+        <input type="text" [(ngModel)]="newName" placeholder="Enter login"
+            [ngClass]="{'focus': isValidLogin() && isNameFocused, 'error': !isValidLogin() && !isNameFocused}"
+            (blur)="onInputBlur('name')">
+        <p>Password</p>
+        <input type="password" [(ngModel)]="newPassword" placeholder="Enter password"
+            [ngClass]="{'focus': isValidPassword() && isPasswordFocused, 'error': !isValidPassword() && !isPasswordFocused}"
+            (blur)="onInputBlur('password')">
+        <p>Email address</p>
+        <input type="text" [(ngModel)]="newEmail" placeholder="Enter email"
+            [ngClass]="{'focus': isValidEmail()  && isEmailFocused, 'error': !isValidEmail() && !isEmailFocused}"
+            (blur)="onInputBlur('email')">
+
+        <input *ngIf="!editStatus" type="button" (click)="addUser()" class='user-add-btn' value="Add user"
+            [disabled]="!isValidForm()">
+        <input *ngIf="editStatus" type="button" (click)="saveEditUser()" class='user-edit-btn' value="Save edit user"
+            [disabled]="!isValidForm()">
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Login</th>
+                    <th>Password</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody [class]='userList'>
+                <tr *ngFor="let user of userData; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><button class='edit-btn btn' (click)="editUser(i)">Edit</button></td>
+                    <td><button class='delete-btn btn' (click)="deleteUser(i)" [disabled]="editStatus">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

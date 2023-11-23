@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CensorComponent } from './censor/censor.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CensorComponent
+    CensorComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
